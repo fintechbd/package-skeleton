@@ -5,9 +5,9 @@ namespace VendorName\Skeleton;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Config;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -22,7 +22,7 @@ class RouteServiceProvider extends ServiceProvider
 
         $root_prefix = Config::get('skeleton.root_prefix', '');
 
-        $this->routes(function () use (&$root_prefix){
+        $this->routes(function () use (&$root_prefix) {
             Route::prefix("{$root_prefix}api")
                 ->middleware('api')
                 ->namespace($this->namespace)

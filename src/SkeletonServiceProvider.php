@@ -31,7 +31,6 @@ class SkeletonServiceProvider extends ServiceProvider
             __DIR__.'/../config/skeleton.php' => config_path('skeleton.php'),
         ]);
 
-
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
         $this->loadTranslationsFrom(__DIR__.'/../lang', 'skeleton');
