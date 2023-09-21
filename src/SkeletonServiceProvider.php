@@ -16,7 +16,7 @@ class SkeletonServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__.'/../config/skeleton.php', 'skeleton'
+            __DIR__.'/../config/skeleton.php', 'fintech.skeleton'
         );
 
         $this->app->register(RouteServiceProvider::class);
@@ -28,7 +28,7 @@ class SkeletonServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->publishes([
-            __DIR__.'/../config/skeleton.php' => config_path('skeleton.php'),
+            __DIR__.'/../config/skeleton.php' => config_path('fintech/skeleton.php'),
         ]);
 
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
