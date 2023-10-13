@@ -13,19 +13,19 @@ return [
     |
     | Note: while adding prefix add closing ending slash '/'
     */
-    
+
     'root_prefix' => 'test/',
 
     //** Model Config Point Do not Remove **//
 
-        /*
+    /*
     |--------------------------------------------------------------------------
     | Repositories
     |--------------------------------------------------------------------------
     |
     | This value will be used across systems where a repositoy instance is needed
     */
-    
+
     'repositories' => [
         //** Repository Binding Config Point Do not Remove **//
     ],
