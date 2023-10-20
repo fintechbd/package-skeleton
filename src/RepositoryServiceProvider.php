@@ -7,23 +7,14 @@ use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider implements DeferrableProvider
 {
-    public array $repositories = [
-        //        interface => [
-        //            'default' => eloquent repository,
-        //            'mongodb' => mongodb repository,
-        //        ],
-    ];
-
     /**
      * Register services.
      */
     public function register(): void
     {
-        foreach ($this->repositories as $interface => $bindings) {
-            $this->app->bind($interface, function ($app) use ($bindings) {
-                return (config('database.default') == 'mongodb')
-                    ? $app->make($bindings['mongodb'])
-                    : $app->make($bindings['default']);
+        foreach (Config::get('fintech.Skeleton.repositories', []) as $interface => $binding) {
+            $this->app->bind($interface, function ($app) use ($binding) {
+                return $app->make($binding);
             });
         }
     }
@@ -35,6 +26,6 @@ class RepositoryServiceProvider extends ServiceProvider implements DeferrablePro
      */
     public function provides(): array
     {
-        return array_keys($this->repositories);
+        return array_keys(Config::get('fintech.Skeleton.repositories', []));
     }
 }
